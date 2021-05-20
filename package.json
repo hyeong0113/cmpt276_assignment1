@@ -1,0 +1,19 @@
+{
+    "name": "calculator.js",
+    "version": "1.0.0",
+    "description": "CMPT 276 individual assignment1",
+    "main": "calculator.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "author": "Hyungjune Kwak",
+    "license": "ISC",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
+}
