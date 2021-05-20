@@ -1,4 +1,4 @@
-var port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 
@@ -16,8 +16,9 @@ app.get('', (req, res) => {
     res.render('index');
 });
 
-app.listen(port, () => console.info(`Listening on port: ${port}`));
-
-server.listen(port, function() {
-    console.log("App is running on port: " + port);
+app.listen(PORT, () => {
+    console.log(`App is running on port ${ PORT }`);
+});
+server.listen(PORT, function() {
+    console.log("App is running on port: " + PORT);
 });
