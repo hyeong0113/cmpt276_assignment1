@@ -1,5 +1,6 @@
 body {
     background-color: rgb(166, 25, 46);
+    margin: 0px !important;
 }
 
 table,
@@ -30,13 +31,14 @@ header {
 
 footer {
     width: 1500px;
-    height: 50px;
-    margin-left: 200px;
+    height: 2.5rem;
+    margin-top: 35px;
 }
 
 h1 {
-    margin-top: 80px;
+    margin-top: 50px;
     margin-left: 50px;
+    font-family: "DINWeb", sans-serif;
 }
 
 h3 {
@@ -44,7 +46,6 @@ h3 {
 }
 
 h4 {
-    margin: 0px;
     height: 20px;
 }
 
@@ -68,16 +69,16 @@ button {
 
 .ourter-card {
     width: 1500px;
-    height: 850px;
+    height: 870px;
     background-color: rgb(255, 255, 255);
-    margin-left: 200px;
+    margin-left: 115px;
 }
 
 .inner-card {
     width: 1000px;
-    height: 600px;
+    height: 650px;
     background-color: rgb(233, 239, 241);
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 50px;
 }
 
