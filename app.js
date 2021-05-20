@@ -2,7 +2,7 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 
-var http = require('http');
+var http = require('https');
 var server = http.Server(app);
 
 app.use(express.static('public'));
