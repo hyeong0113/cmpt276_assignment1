@@ -15,13 +15,6 @@ app.set('views', __dirname + '/views');
 
 app.set('view engine', 'html');
 
-app.get('', (req, res) => {
-    res.render('index');
-});
-
-app.listen(PORT, () => {
-    console.log(`App is running on port ${ PORT }`);
-});
 server.listen(PORT, function() {
     console.log("App is running on port: " + PORT);
 });
