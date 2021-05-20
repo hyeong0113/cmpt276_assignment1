@@ -18,11 +18,3 @@ app.set('view engine', 'html');
 server.listen(PORT, function() {
     console.log("App is running on port: " + PORT);
 });
-
-var io = require('socket.io')(server);
-
-io.on('connection', function(socket) {
-    socket.on('message', function(msg) {
-        io.emit('message', msg);
-    });
-});
