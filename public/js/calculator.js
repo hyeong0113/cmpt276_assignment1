@@ -1,3 +1,6 @@
+const NUM_ACTIVITY = 4;
+const FLOAT_POINT = 3;
+
 function meanGrade() {
     var myGradeElement = document.getElementsByName("my-grade");
     var baseGradeElement = document.getElementsByName("base-grade");
@@ -6,6 +9,9 @@ function meanGrade() {
 
     var i;
     var count = 0;
+
+    var j;
+    var percent_arr = new Array(NUM_ACTIVITY);
 
     var error = false;
     for (i = 0; i < myGradeElement.length; i++) {
@@ -17,22 +23,27 @@ function meanGrade() {
         }
 
         if (myGradeElement[i].value && baseGradeElement[i].value) {
-            let percent = ((parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value))).toFixed(2);
-            document.getElementById(i).innerHTML = percent + "%";
+            let percent = (parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value));
+            percent_arr[i] = percent;
             totalGrade += percent;
             count++;
         }
     }
 
-    if (!error) {
-        if (totalGrade === 0) {
-            document.getElementById("result").innerHTML = "Mean: 0";
-            return;
-        }
-        document.getElementById("result").innerHTML = "Mean: " + (totalGrade / count).toFixed(2).toString();
-    } else {
+    if (error) {
         document.getElementById("result").innerHTML = "You need to insert both grades in each activities";
+        return;
     }
+
+    if (totalGrade === 0) {
+
+        report_percentage(percent_arr, j);
+        document.getElementById("result").innerHTML = "Mean: 0";
+        return;
+    }
+
+    report_percentage(percent_arr, j);
+    document.getElementById("result").innerHTML = "Mean: " + (totalGrade / count).toFixed(FLOAT_POINT).toString();
 }
 
 function weightGrade() {
@@ -43,6 +54,9 @@ function weightGrade() {
     var weightedTotalGrade = 0;
     var weightTotal = 0;
     var i;
+
+    var j;
+    var percent_arr = new Array(NUM_ACTIVITY);
 
     var meanError = false;
     var weightError = false;
@@ -57,9 +71,10 @@ function weightGrade() {
 
         if (myGradeElement[i].value && baseGradeElement[i].value) {
             if (weightGradeElement[i].value) {
-                let percent = ((parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value))).toFixed(2);
-                document.getElementById(i).innerHTML = percent + "%";
-                weightedTotalGrade += ((parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value)) * weightGradeElement[i].value).toFixed(2);
+                let percent = (parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value));
+                percent_arr[i] = percent;
+                // document.getElementById(i).innerHTML = percent + "%";
+                weightedTotalGrade += ((parseInt(myGradeElement[i].value)) / (parseInt(baseGradeElement[i].value)) * weightGradeElement[i].value);
                 weightTotal += parseInt(weightGradeElement[i].value);
             } else {
                 console.error("You need to insert weight value for calculation!");
@@ -80,8 +95,22 @@ function weightGrade() {
     }
 
     if (weightTotal === 0) {
+
+        report_percentage(percent_arr, j);
         document.getElementById("result").innerHTML = "Weighted: 0";
         return;
     }
-    document.getElementById("result").innerHTML = "Weighted: " + (weightedTotalGrade / weightTotal).toFixed(2).toString();
+
+    report_percentage(percent_arr, j);
+    document.getElementById("result").innerHTML = "Weighted: " + (weightedTotalGrade / weightTotal).toFixed(FLOAT_POINT).toString();
+}
+
+function report_percentage(percent_arr, j) {
+    for (j = 0; j < NUM_ACTIVITY; j++) {
+        if (percent_arr[j]) {
+            document.getElementById(j).innerHTML = percent_arr[j].toFixed(FLOAT_POINT) + "%";
+        } else {
+            document.getElementById(j).innerHTML = " ";
+        }
+    }
 }
