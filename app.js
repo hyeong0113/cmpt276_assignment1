@@ -14,7 +14,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 
 app.get('', (req, res) => {
-    res.render('index');
+    res.render('calculator');
 });
 
 app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
